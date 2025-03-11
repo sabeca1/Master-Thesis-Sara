@@ -129,8 +129,8 @@ def signal_quality_1_subject(datapath, save_path, subj_id, session):
     print("Applying filtering...")
     # raw_haemo = raw_haemo.filter(None, 0.35, filter_length=87, h_trans_bandwidth=0.3, fir_window='hamming', fir_design='firwin')
     # raw_haemo = raw_haemo.filter(0.025, None, l_trans_bandwidth=0.005)
-    raw_haemo_cropped = raw_haemo_cropped.filter(0.05, 0.7, h_trans_bandwidth=0.2, l_trans_bandwidth=0.02)
-    raw_haemo_original = raw_haemo_original.filter(0.05, 0.7, h_trans_bandwidth=0.2, l_trans_bandwidth=0.02)
+    raw_haemo_cropped = raw_haemo_cropped.filter(0.025, 0.35, h_trans_bandwidth=0.3, l_trans_bandwidth=0.005)
+    raw_haemo_original = raw_haemo_original.filter(0.025, 0.35, h_trans_bandwidth=0.3, l_trans_bandwidth=0.005)
 
     # Post-filtering plot
     print("Plotting post-filtering power spectral density...")
@@ -385,7 +385,7 @@ def scatter_mean_rois(avg_theta_df, save_path, subj_id, session, roi, df_big, co
         ax.set_xticks(x_positions)
         ax.set_xticklabels(["HbO", "HbR"])
         ax.set_title(f"{condition}")
-        ax.set_ylim(-0.15, 0.15)  # Adjust Y-axis range
+        ax.set_ylim(-0.2, 0.2)  # Adjust Y-axis range
         ax.grid(True)
         ax.set_ylabel("Mean Theta Value (µM)")
         ax.legend()
@@ -745,9 +745,15 @@ save_path_template = "C:/Users/sarab/Desktop/THESIS/Tutorial MNE/results/sub-{su
 subj_id = "19" """
 
 
-glm_single_subject_rois(datapath_template="subjects/sub-{subj_id}/{session}/nirs",save_path_template="results/sub-{subj_id}/{session}/",subj_id="19")
+# glm_single_subject_rois(datapath_template="subjects/sub-{subj_id}/{session}/nirs",save_path_template="results/sub-{subj_id}/{session}/",subj_id="19")
 
-
+for subj_id in range(1, 22):  # Loop from 1 to 21
+    subj_id_str = f"{subj_id:02d}"  # Format as two-digit string (e.g., "01", "02")
+    glm_single_subject_rois(
+        datapath_template=f"subjects/sub-{subj_id_str}/{{session}}/nirs",
+        save_path_template=f"results/sub-{subj_id_str}/{{session}}/",
+        subj_id=subj_id_str
+    )
 
 
 
