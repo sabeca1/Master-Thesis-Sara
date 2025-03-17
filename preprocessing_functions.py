@@ -755,7 +755,12 @@ for subj_id in range(1, 22):  # Loop from 1 to 21
         subj_id=subj_id_str
     )
 
-
+# add which optodes are used per region per patient and region
+# more detail info about specific optodes. --> how many times is each optode activate.
+# optode based dataframe, do a statistical test for each optode.
+# what activation means? what activation patterns I'm expecting?
+# Lateralization differences (higher activation on left side)
+# PCA or ICA to reduce the number of channels-->Yamada paper
 
 
 
