@@ -236,7 +236,7 @@ def glm_single_subject_optodes(datapath_template, save_path_template, subj_id):
     
     return df_big
 
-for subj_id in range(1, 2):
+for subj_id in range(1, 22):
     subj_id_str = f"{subj_id:02d}"
     glm_single_subject_optodes(
         datapath_template=f"subjects/sub-{subj_id_str}/{{session}}/nirs",
