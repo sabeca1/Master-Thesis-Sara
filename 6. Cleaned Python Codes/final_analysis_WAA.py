@@ -212,7 +212,7 @@ def individual_analysis(bids_path):
 # Individual Level-zscore
 
 # %%
-def reject_epochs_zscore_individual(data, subject, session, condition_name, stats_df, z_thresh=3.0, max_reject_ratio=1.0):
+def reject_epochs_zscore_individual(data, subject, session, condition_name, stats_df, z_thresh=2.5, max_reject_ratio=1.0):
     """
     Rejects epochs based on z-score threshold using subject/session/condition-specific stats from stats_df.
 
@@ -257,7 +257,7 @@ def reject_epochs_zscore_individual(data, subject, session, condition_name, stat
 # # Full preprocessing function
 
 # %%
-def full_preprocessing_individual(bids_path, z_thresh=2, stats_df=None):
+def full_preprocessing_individual(bids_path, z_thresh=2.5, stats_df=None):
     
     raw_haemo, epochs, event_dict, raw_od, events = individual_analysis(bids_path)
 

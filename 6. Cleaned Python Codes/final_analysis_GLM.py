@@ -87,7 +87,7 @@ stats_df = pd.read_csv("individual_mean_stddev_zscore_negcorr.csv")
 # ## Epoch rejection
 
 # %%
-def reject_epochs(data, subject, session, condition_name, stats_df, z_thresh=3.0, max_reject_ratio=1.0):
+def reject_epochs(data, subject, session, condition_name, stats_df, z_thresh=2.5, max_reject_ratio=1.0):
     """
     Rejects epochs based on z-score threshold using subject/session/condition-specific stats from stats_df.
 
@@ -329,7 +329,7 @@ def preprocessing_glm_ROI(bids_path, subject_id, session_id, id, apply_epoch_rej
             session=session_id,
             condition_name="Control",
             stats_df=stats_df,
-            z_thresh=2,
+            z_thresh=2.5,
             max_reject_ratio=1
         )
        
@@ -342,7 +342,7 @@ def preprocessing_glm_ROI(bids_path, subject_id, session_id, id, apply_epoch_rej
             session=session_id,
             condition_name="Noise",
             stats_df=stats_df,
-            z_thresh=2,
+            z_thresh=2.5,
             max_reject_ratio=1
         )
         NOISE_GOOD_IDX = idx_dict["NOISE_GOOD_IDX"]
@@ -354,7 +354,7 @@ def preprocessing_glm_ROI(bids_path, subject_id, session_id, id, apply_epoch_rej
             session=session_id,
             condition_name="Speech",
             stats_df=stats_df,
-            z_thresh=2,
+            z_thresh=2.5,
             max_reject_ratio=1
         )
         
